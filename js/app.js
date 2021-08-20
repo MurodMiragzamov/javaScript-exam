@@ -84,17 +84,23 @@ function renderUsers(el,element){
                         elPostbody.textContent = el.body;
 
                         element.appendChild(elPostItem);
+
+                        
                 }
 
                
 
-                let elPostBtn = elTemplateComments.querySelector('.btn_post');
+                let elPostBtn = elTemplatePost.querySelector('.btn_post');
 
-              
+              console.log(elPostBtn)
 
-                elPostBtn.addEventListener('click',evt=>{
-            
-                   evt.innerHTML =null
+                elPostBtn.addEventListener('click',function(){
+
+            console.log('fewfwe')
+
+                   elCommentsList.innerHTML =null
+                   
+                   
                     fetch('https://jsonplaceholder.typicode.com/posts/'+postNumber+'/comments').then((response)=>response.json()).then((dataComments)=>dataComments);
 
                     const tempComments = elTemplateComments.cloneNode(true);
