@@ -87,17 +87,49 @@ function renderUsers(el,element){
                 }
 
                
+
+                let elPostBtn = elTemplateComments.querySelector('.btn_post');
+
+              
+
+                elPostBtn.addEventListener('click',evt=>{
+            
+                   evt.innerHTML =null
+                    fetch('https://jsonplaceholder.typicode.com/posts/'+postNumber+'/comments').then((response)=>response.json()).then((dataComments)=>dataComments);
+
+                    const tempComments = elTemplateComments.cloneNode(true);
+
+                    let  elCommentsItem = tempComments.querySelector('.comments_item'),
+                    elCommentsPostid = tempComments.querySelector('.comments_postid'),
+                    elCommentsId = tempComments.querySelector('.comments_id'),
+                    elCommentsName = tempComments.querySelector('.comments_name'),
+                    elCommentsEmail = tempComments.querySelector('.comments_email'),
+                    elCommentsBody = tempComments.querySelector('.comments_body');
+
+                    elCommentsPostid.textContent = dataComments.postId;
+                    elCommentsId.textContent = dataComments.id;
+                    elCommentsName.textContent = dataComments.name;
+                    elCommentsEmail.textContent = dataComments.email;
+                    elCommentsBody.textContent = dataComments.body;
+
+                    elCommentsList.appendChild(elCommentsItem)
+                
+                })
+              
+                
             })
 
           
+            
             
 
     }
 }
 
-
-
-///////////////////////////////////////
-////////////////
-//////////////////
-//////////////////////////////////////
+///////
+///
+/////
+///
+///////
+////
+////
