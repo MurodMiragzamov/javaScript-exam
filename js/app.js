@@ -37,7 +37,7 @@ function renderUsers(el,element){
                 elUserNumber = tempUser.querySelector('.user_number'),
                 elUserWeb = tempUser.querySelector('.user_web'),
                 elUserCompany = tempUser.querySelector('.user_company'),
-                elUserBtn = tempUser.querySelector('.btn');
+                elUserBtn = tempUser.querySelector('.btn_user');
 
                
     // creat text content
@@ -97,3 +97,7 @@ function renderUsers(el,element){
 
 
 
+///////////////////////////////////////
+////////////////
+//////////////////
+//////////////////////////////////////
