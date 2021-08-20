@@ -6,6 +6,7 @@
 ul{
     display: flex;
     justify-content:space-around;
+    flex-wrap: wrap;
   
     
 }
@@ -15,3 +16,27 @@ h1{
     padding-right: 50px;
     
 }
+.user_item{
+  
+    padding: 7px;
+    margin-top: 15px;
+    border: 1px solid #444;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    
+}
+ul li{
+    width: 50%;
+}
+
+/* .user_list,.post_list,.comments_list{
+    margin-top: 70px;
+    width: 33%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+} */
