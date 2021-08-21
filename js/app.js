@@ -67,6 +67,7 @@ function renderUsers(el,element){
 
                 function renderPost(el,element){
                    element.innerHTML = null;
+                   elCommentsList.innerHTML=null
                     const tempPost = elTemplatePost.cloneNode(true);
 
                     //post content
@@ -88,14 +89,12 @@ function renderUsers(el,element){
 
 
 
-                            elPostBtn.addEventListener('click', function(){
-                                
+                            elPostBtn.addEventListener('click', evt=>{
+                                elCommentsList.innerHTML=null
                             let commentsNumber =  postNumber
 
-                            fetch('https://jsonplaceholder.typicode.com/posts/'+commentsNumber+'/comments').then((response)=>response.json()).then((dataComments)=>renderComments(dataComments,elCommentsList));
-
-                            function renderComments(el,element){
-                                element.innerHTML = null;
+                            fetch('https://jsonplaceholder.typicode.com/posts/'+commentsNumber+'/comments').then((response)=>response.json()).then((dataComments)=>dataComments.forEach(ele=>{
+                             
                                 const tempComments = elTemplateComments.cloneNode(true);
 
                        let  elCommentsItem = tempComments.querySelector('.comments_item'),
@@ -107,16 +106,16 @@ function renderUsers(el,element){
                             elCommentsBody = tempComments.querySelector('.comments_body');
 
 
-                            elCommentsPostid.textContent = el[i].postId;
-                            elCommentsId.textContent = el[i].id;
-                            elCommentsName.textContent = el[i].name;
-                            elCommentsEmail.textContent = el[i].email;
-                            elCommentsBody.textContent = el[i].body;
+                            elCommentsPostid.textContent = ele.postId;
+                            elCommentsId.textContent = ele.id;
+                            elCommentsName.textContent = ele.name;
+                            elCommentsEmail.textContent = ele.email;
+                            elCommentsBody.textContent = ele.body;
 
-                            element.appendChild(elCommentsItem)
-                            }
-                        })
-                        
+                            elCommentsList.appendChild(elCommentsItem)
+                            }));
+
+                        })    
                 }
 
                
