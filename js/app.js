@@ -70,6 +70,7 @@ function renderUsers(el,element){
                    elCommentsList.innerHTML=null
                     const tempPost = elTemplatePost.cloneNode(true);
 
+                    
                     //post content
                     let elPostItem = tempPost.querySelector('.post_item'),
 
