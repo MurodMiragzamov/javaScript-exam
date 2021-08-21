@@ -75,7 +75,8 @@ function renderUsers(el,element){
                         elPostUserid = tempPost.querySelector('.post_userid'),
                         elPostId = tempPost.querySelector('.post_id'),
                         elPostTitle = tempPost.querySelector('.post_title'),
-                        elPostbody = tempPost.querySelector('.post_body');
+                        elPostbody = tempPost.querySelector('.post_body'),
+                        elPostBtn = tempPost.querySelector('.btn_post');
 
 
                         elPostUserid.textContent = el.userId;
@@ -85,42 +86,71 @@ function renderUsers(el,element){
 
                         element.appendChild(elPostItem);
 
+
+
+                            elPostBtn.addEventListener('click', function(){
+                                
+                            let commentsNumber =  postNumber
+
+                            fetch('https://jsonplaceholder.typicode.com/posts/'+commentsNumber+'/comments').then((response)=>response.json()).then((dataComments)=>renderComments(dataComments,elCommentsList));
+
+                            function renderComments(el,element){
+                                element.innerHTML = null;
+                                const tempComments = elTemplateComments.cloneNode(true);
+
+                       let  elCommentsItem = tempComments.querySelector('.comments_item'),
+
+                            elCommentsPostid = tempComments.querySelector('.comments_postid'),
+                            elCommentsId = tempComments.querySelector('.comments_id'),
+                            elCommentsName = tempComments.querySelector('.comments_name'),
+                            elCommentsEmail = tempComments.querySelector('.comments_email'),
+                            elCommentsBody = tempComments.querySelector('.comments_body');
+
+
+                            elCommentsPostid.textContent = el[i].postId;
+                            elCommentsId.textContent = el[i].id;
+                            elCommentsName.textContent = el[i].name;
+                            elCommentsEmail.textContent = el[i].email;
+                            elCommentsBody.textContent = el[i].body;
+
+                            element.appendChild(elCommentsItem)
+                            }
+                        })
                         
                 }
 
                
 
-                let elPostBtn = elTemplatePost.querySelector('.btn_post');
+            //     let elPostBtn = elTemplatePost.querySelector('.btn_post');
 
-              console.log(elPostBtn)
+            //   console.log(elPostBtn)
 
-                elPostBtn.addEventListener('click',function(){
+            //     elPostBtn.addEventListener('click',function(){
 
-            console.log('fewfwe')
-
-                   elCommentsList.innerHTML =null
+            
+            //        elCommentsList.innerHTML =null
+            //        console.log('fewfwe')
                    
-                   
-                    fetch('https://jsonplaceholder.typicode.com/posts/'+postNumber+'/comments').then((response)=>response.json()).then((dataComments)=>dataComments);
+            //         fetch('https://jsonplaceholder.typicode.com/posts/'+postNumber+'/comments').then((response)=>response.json()).then((dataComments)=>dataComments);
 
-                    const tempComments = elTemplateComments.cloneNode(true);
+            //         const tempComments = elTemplateComments.cloneNode(true);
 
-                    let  elCommentsItem = tempComments.querySelector('.comments_item'),
-                    elCommentsPostid = tempComments.querySelector('.comments_postid'),
-                    elCommentsId = tempComments.querySelector('.comments_id'),
-                    elCommentsName = tempComments.querySelector('.comments_name'),
-                    elCommentsEmail = tempComments.querySelector('.comments_email'),
-                    elCommentsBody = tempComments.querySelector('.comments_body');
+            //         let  elCommentsItem = tempComments.querySelector('.comments_item'),
+            //         elCommentsPostid = tempComments.querySelector('.comments_postid'),
+            //         elCommentsId = tempComments.querySelector('.comments_id'),
+            //         elCommentsName = tempComments.querySelector('.comments_name'),
+            //         elCommentsEmail = tempComments.querySelector('.comments_email'),
+            //         elCommentsBody = tempComments.querySelector('.comments_body');
 
-                    elCommentsPostid.textContent = dataComments.postId;
-                    elCommentsId.textContent = dataComments.id;
-                    elCommentsName.textContent = dataComments.name;
-                    elCommentsEmail.textContent = dataComments.email;
-                    elCommentsBody.textContent = dataComments.body;
+            //         elCommentsPostid.textContent = dataComments.postId;
+            //         elCommentsId.textContent = dataComments.id;
+            //         elCommentsName.textContent = dataComments.name;
+            //         elCommentsEmail.textContent = dataComments.email;
+            //         elCommentsBody.textContent = dataComments.body;
 
-                    elCommentsList.appendChild(elCommentsItem)
+            //         elCommentsList.appendChild(elCommentsItem)
                 
-                })
+            //     })
               
                 
             })
@@ -132,10 +162,12 @@ function renderUsers(el,element){
     }
 }
 
-///////
+////
 ///
+///
+////
+//////
+///
+////
+////
 /////
-///
-///////
-////
-////
